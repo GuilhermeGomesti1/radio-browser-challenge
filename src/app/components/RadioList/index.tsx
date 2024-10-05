@@ -1,21 +1,16 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { fetchStations } from "@/app/services/radioService";
+import { useStations } from "@/app/services/radioService";
 import { Station } from "@/app/types/types";
-
+import Image from "next/image";
+import carregandogif from "../../../../public/carregandogif.gif";
 const RadioList: React.FC<{
   localQuery: string;
   page: number;
   setSelectedRadio: (radio: Station) => void;
 }> = ({ localQuery = "", page, setSelectedRadio }) => {
   const audioRefs = useRef<{ [key: string]: HTMLAudioElement | null }>({});
-
-  const { data: allRadios = [], isLoading } = useQuery<Station[]>({
-    queryKey: ["radios", localQuery, page],
-    queryFn: () => fetchStations(localQuery),
-  });
-
+  const { data: allRadios = [], isLoading } = useStations(localQuery);
   const [selectedRadio, setSelectedRadioState] = useState<Station | null>(null);
 
   const handleRadioSelect = (radio: Station) => {
@@ -23,9 +18,8 @@ const RadioList: React.FC<{
     setSelectedRadioState(radio);
   };
 
-  const filteredRadios = allRadios.filter(
-    (radio) =>
-      radio.name && radio.name.toLowerCase().includes(localQuery.toLowerCase())
+  const filteredRadios = allRadios.filter((radio) =>
+    radio.name?.toLowerCase().includes(localQuery.toLowerCase())
   );
 
   const radiosToDisplay = selectedRadio
@@ -42,7 +36,11 @@ const RadioList: React.FC<{
   };
 
   if (isLoading) {
-    return <div className="text-white">Carregando...</div>;
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <Image src={carregandogif} alt="Loading" width={258} height={310} />
+      </div>
+    );
   }
 
   return (
@@ -55,7 +53,16 @@ const RadioList: React.FC<{
             onClick={() => handleRadioSelect(radio)}
           >
             <div className="flex items-center w-[300px]">
-              <img src={radio.favicon} alt="" className="w-8 h-8 mr-2" />
+              <div
+                className={`w-8 h-8 mr-2 bg-cover ${
+                  radio.favicon ? "" : "bg-gray-400"
+                }`}
+                style={{
+                  backgroundImage: radio.favicon
+                    ? `url(${radio.favicon})`
+                    : "none",
+                }}
+              />
               <span className="text-white flex-1 min-w-[120px] text-left">
                 {radio.name}
               </span>

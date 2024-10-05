@@ -1,12 +1,11 @@
-// components/ListItem.tsx
 "use client";
 
 import React from "react";
 import { Station } from "@/app/types/types";
 
 interface ListItemProps {
-  data: Station; // A estação
-  onClick: () => void; // Função a ser chamada ao clicar
+  data: Station;
+  onClick: () => void;
 }
 
 const ListItem: React.FC<ListItemProps> = ({ data, onClick }) => {
