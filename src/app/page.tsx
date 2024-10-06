@@ -21,7 +21,7 @@ export default function Home() {
   }, [query]);
 
   return (
-    <div className="p-4 min-h-screen">
+    <div className="p-2 min-h-screen">
       <div className="flex justify-center mb-4">
         <Image
           src={radioBrowserImg}
