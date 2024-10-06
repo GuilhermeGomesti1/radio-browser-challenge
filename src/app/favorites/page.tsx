@@ -76,7 +76,7 @@ const FavoritePage: React.FC = () => {
             isLoading={isLoading}
             handleRadioSelect={handleRadioSelect}
           />
-          <div className="flex justify-center mt-4 mb-16 gap-4">
+          <div className="flex justify-center mt-4 mb-16 gap-2 items-center">
             <button
               onClick={handlePreviousPage}
               disabled={currentPage === 1}
@@ -85,7 +85,8 @@ const FavoritePage: React.FC = () => {
               }`}
             >
               Anterior
-            </button>
+            </button>{" "}
+            <span className="text-[#FF6B00] "> {currentPage}</span>
             <button
               onClick={handleNextPage}
               disabled={currentPage === totalPages}
@@ -95,6 +96,7 @@ const FavoritePage: React.FC = () => {
                   : ""
               }`}
             >
+              {" "}
               Próxima
             </button>
           </div>

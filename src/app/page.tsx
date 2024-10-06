@@ -58,14 +58,15 @@ export default function Home() {
                 page={page}
                 setSelectedRadio={setSelectedRadio}
               />
-              <div className="flex space-x-2 mt-8 mb-16">
+              <div className="flex space-x-2 mt-8 mb-16  items-center">
                 <button
                   onClick={handlePreviousPage}
                   disabled={page === 1}
                   className="bg-[#FF6B00] rounded font-bold text-white transition-all duration-250 ease-in-out hover:brightness-110 hover:scale-103 px-4 py-2"
                 >
                   Anterior
-                </button>
+                </button>{" "}
+                <span className="text-[#FF6B00]">{page}</span>
                 <button
                   onClick={handleNextPage}
                   className="bg-[#FF6B00] rounded font-bold text-white transition-all duration-250 ease-in-out hover:brightness-110 hover:scale-103 px-4 py-2"
