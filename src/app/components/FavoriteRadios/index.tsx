@@ -25,7 +25,7 @@ const FavoriteRadios: React.FC<FavoriteRadiosProps> = ({
   }
 
   return (
-    <ul className="list-none p-0">
+    <ul className="list-none p-0 ">
       {favorites.length > 0 ? (
         favorites.map((radio) => (
           <RadioItem
@@ -35,7 +35,9 @@ const FavoriteRadios: React.FC<FavoriteRadiosProps> = ({
           />
         ))
       ) : (
-        <li className="text-white">Nenhuma rádio favorita encontrada.</li>
+        <li className="text-white text-center">
+          Nenhuma rádio favorita encontrada.
+        </li>
       )}
     </ul>
   );
