@@ -37,7 +37,7 @@ const RadioItem: React.FC<RadioItemProps> = ({ radio, onSelect }) => {
 
   return (
     <div className="flex items-center text-white mb-2">
-      <div className="flex items-center w-[300px]" onClick={handleSelect}>
+      <div className="flex items-center w-[300px] relative">
         <div
           className={`w-8 h-8 mr-2 bg-cover ${
             radio.favicon ? "" : "bg-gray-400"
@@ -49,6 +49,15 @@ const RadioItem: React.FC<RadioItemProps> = ({ radio, onSelect }) => {
         <span className="text-white flex-1 min-w-[120px] text-left">
           {radio.name}
         </span>
+
+        <button
+          onClick={handleSelect}
+          className="absolute left-0 -mt-1 -ml-2 top-0 flex items-center justify-center w-6 h-6 rounded-full bg-white bg-opacity-20 text-[#FF6B00] hover:text-[#ffc800]"
+          title="Mais informações"
+          style={{ transform: "translateY(-50%)" }}
+        >
+          <span className="text-lg">ℹ️</span>
+        </button>
       </div>
 
       <div className="flex items-center ml-auto">

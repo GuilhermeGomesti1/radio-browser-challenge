@@ -35,17 +35,19 @@ const FavoritePage: React.FC = () => {
       </div>{" "}
       {selectedRadio ? (
         <>
-          <RadioItem radio={selectedRadio} onSelect={setSelectedRadio} />
-          <div className="flex justify-center items-center mt-4">
-            {" "}
-            <div className="mt-4 text-center text-white">
-              <h2 className="text-xl font-bold">{selectedRadio.name}</h2>
-              <p>{selectedRadio.language} </p>
-              <p>{selectedRadio.country}</p>
-              <BackButton
-                setSelectedRadio={setSelectedRadio}
-                setQuery={() => {}}
-              />
+          <div className="max-w-[600px] mx-auto  ">
+            <RadioItem radio={selectedRadio} onSelect={setSelectedRadio} />
+            <div className="flex justify-center items-center mt-4 ">
+              {" "}
+              <div className="mt-4 text-center text-white">
+                <h2 className="text-xl font-bold">{selectedRadio.name}</h2>
+                <p>{selectedRadio.language} </p>
+                <p>{selectedRadio.country}</p>
+                <BackButton
+                  setSelectedRadio={setSelectedRadio}
+                  setQuery={() => {}}
+                />
+              </div>
             </div>
           </div>
         </>
