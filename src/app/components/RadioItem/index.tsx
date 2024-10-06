@@ -1,8 +1,9 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Station } from "@/app/types/types";
 import FavoriteButton from "@/app/components/FavoriteButton";
 import AudioPlayer from "../AudioPlayer";
+import MobileAudioPlayer from "../MobileAudioPlayer";
 
 interface RadioItemProps {
   radio: Station;
@@ -17,6 +18,23 @@ const RadioItem: React.FC<RadioItemProps> = ({ radio, onSelect }) => {
   const handlePause = () => {
     console.log(`Áudio pausado: ${radio.name}`);
   };
+
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div className="flex items-center text-white mb-2">
       <div className="flex items-center w-[300px]" onClick={handleSelect}>
@@ -33,9 +51,15 @@ const RadioItem: React.FC<RadioItemProps> = ({ radio, onSelect }) => {
         </span>
       </div>
 
-      {/* O AudioPlayer e o FavoriteButton estão fora do contêiner clicável */}
       <div className="flex items-center ml-auto">
-        <AudioPlayer src={radio.url_resolved} onPause={handlePause} />
+        {isMobile ? (
+          <MobileAudioPlayer
+            src={radio.url_resolved}
+            isAvailable={!!radio.url_resolved}
+          />
+        ) : (
+          <AudioPlayer src={radio.url_resolved} onPause={handlePause} />
+        )}
         <FavoriteButton radio={radio} />
       </div>
     </div>

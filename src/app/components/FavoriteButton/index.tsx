@@ -22,9 +22,11 @@ const FavoriteButton: React.FC<{
         e.stopPropagation();
         handleToggleFavorite();
       }}
-      className={`ml-2 ${isFavorited ? "text-yellow-500" : "text-gray-500"}`}
+      className={`flex items-center justify-center w-12 h-12 text-2xl ${
+        isFavorited ? "text-yellow-500" : "text-gray-500"
+      } transition-colors duration-200`}
     >
-      {isFavorited ? "⭐" : "☆"}{" "}
+      {isFavorited ? "⭐" : "☆"}
     </button>
   );
 };

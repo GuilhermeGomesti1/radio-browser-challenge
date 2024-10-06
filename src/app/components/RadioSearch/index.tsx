@@ -12,13 +12,13 @@ const RadioSearch: React.FC<{
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center ml-5 md:ml-0 md:mr-12 mb-4">
       <input
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Pesquisar rádios"
-        className="border p-2 mb-2 w-80"
+        className="border p-2 mb-2 w-80 "
       />
       <button
         onClick={handleSearch}

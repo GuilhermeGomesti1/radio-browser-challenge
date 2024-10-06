@@ -21,7 +21,7 @@ export default function Home() {
   }, [query]);
 
   return (
-    <div className="p-4  min-h-screen">
+    <div className="p-4 min-h-screen">
       <div className="flex justify-center mb-4">
         <Image
           src={radioBrowserImg}
@@ -32,8 +32,8 @@ export default function Home() {
           loading="lazy"
           quality={100}
         />
-      </div>{" "}
-      <div className="flex justify-center items-start space-x-4">
+      </div>
+      <div className="flex flex-col md:flex-row justify-center items-start">
         <div className="flex flex-col items-center">
           <RadioSearch setLocalQuery={setQuery} />
         </div>
@@ -62,13 +62,13 @@ export default function Home() {
                 <button
                   onClick={handlePreviousPage}
                   disabled={page === 1}
-                  className="bg-[#FF6B00] rounded font-bold text-white transition-all duration-250 ease-in-out hover:brightness-110 hover:scale-103  px-4 py-2"
+                  className="bg-[#FF6B00] rounded font-bold text-white transition-all duration-250 ease-in-out hover:brightness-110 hover:scale-103 px-4 py-2"
                 >
                   Anterior
                 </button>
                 <button
                   onClick={handleNextPage}
-                  className="bg-[#FF6B00] rounded font-bold text-white transition-all duration-250 ease-in-out hover:brightness-110 hover:scale-103  px-4 py-2"
+                  className="bg-[#FF6B00] rounded font-bold text-white transition-all duration-250 ease-in-out hover:brightness-110 hover:scale-103 px-4 py-2"
                 >
                   Próxima
                 </button>
