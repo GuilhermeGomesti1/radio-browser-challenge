@@ -17,13 +17,9 @@ const RadioItem: React.FC<RadioItemProps> = ({ radio, onSelect }) => {
   const handlePause = () => {
     console.log(`Áudio pausado: ${radio.name}`);
   };
-
   return (
-    <li
-      className="flex items-center text-white mb-2 justify-center"
-      onClick={handleSelect}
-    >
-      <div className="flex items-center w-[300px]">
+    <div className="flex items-center text-white mb-2">
+      <div className="flex items-center w-[300px]" onClick={handleSelect}>
         <div
           className={`w-8 h-8 mr-2 bg-cover ${
             radio.favicon ? "" : "bg-gray-400"
@@ -37,10 +33,12 @@ const RadioItem: React.FC<RadioItemProps> = ({ radio, onSelect }) => {
         </span>
       </div>
 
-      <AudioPlayer src={radio.url_resolved} onPause={handlePause} />
-
-      <FavoriteButton radio={radio} />
-    </li>
+      {/* O AudioPlayer e o FavoriteButton estão fora do contêiner clicável */}
+      <div className="flex items-center ml-auto">
+        <AudioPlayer src={radio.url_resolved} onPause={handlePause} />
+        <FavoriteButton radio={radio} />
+      </div>
+    </div>
   );
 };
 
