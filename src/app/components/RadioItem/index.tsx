@@ -1,7 +1,8 @@
 "use client";
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import { Station } from "@/app/types/types";
 import FavoriteButton from "@/app/components/FavoriteButton";
+import AudioPlayer from "../AudioPlayer";
 
 interface RadioItemProps {
   radio: Station;
@@ -9,30 +10,13 @@ interface RadioItemProps {
 }
 
 const RadioItem: React.FC<RadioItemProps> = ({ radio, onSelect }) => {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
   const handleSelect = () => {
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-    }
     onSelect(radio);
   };
 
-  useEffect(() => {
-    const audioElement = audioRef.current;
-    if (audioElement) {
-      const handlePause = () => {
-        audioElement.currentTime = 0;
-      };
-
-      audioElement.addEventListener("pause", handlePause);
-
-      return () => {
-        audioElement.removeEventListener("pause", handlePause);
-      };
-    }
-  }, [audioRef]);
+  const handlePause = () => {
+    console.log(`Áudio pausado: ${radio.name}`);
+  };
 
   return (
     <li
@@ -52,12 +36,9 @@ const RadioItem: React.FC<RadioItemProps> = ({ radio, onSelect }) => {
           {radio.name}
         </span>
       </div>
-      <audio
-        ref={audioRef}
-        controls
-        className="ml-4"
-        src={radio.url_resolved}
-      />
+
+      <AudioPlayer src={radio.url_resolved} onPause={handlePause} />
+
       <FavoriteButton radio={radio} />
     </li>
   );

@@ -45,7 +45,6 @@ export default function Home() {
                 <h2 className="text-xl font-bold">{selectedRadio.name}</h2>
                 <p>{selectedRadio.language} </p>
                 <p>{selectedRadio.country}</p>
-                {/* Adicione mais informações conforme necessário */}
               </div>
               <BackButton
                 setSelectedRadio={setSelectedRadio}

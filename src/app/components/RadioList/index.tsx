@@ -31,7 +31,7 @@ const RadioList: React.FC<{
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex items-center justify-center ">
         <Image src={carregandogif} alt="Loading" width={258} height={310} />
       </div>
     );
