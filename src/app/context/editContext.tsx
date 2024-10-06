@@ -11,11 +11,14 @@ const EditRadioContext = createContext<EditContextType | undefined>(undefined);
 export const EditRadioProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [radios, setRadios] = useState<Station[]>(() => {
-    const cachedStations = localStorage.getItem("stations");
-    return cachedStations ? JSON.parse(cachedStations) : [];
-  });
+  const [radios, setRadios] = useState<Station[]>([]);
 
+  useEffect(() => {
+    const cachedStations = localStorage.getItem("stations");
+    if (cachedStations) {
+      setRadios(JSON.parse(cachedStations));
+    }
+  }, []);
   const editRadio = (updatedRadio: Station) => {
     setRadios((prevRadios) =>
       prevRadios.map((radio) =>
