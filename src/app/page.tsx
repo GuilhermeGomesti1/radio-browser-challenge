@@ -22,7 +22,7 @@ export default function Home() {
 
   return (
     <div className="p-2 min-h-screen">
-      <div className="flex justify-center mb-4">
+      <div className="flex justify-center mb-4 mt-4">
         <Image
           src={radioBrowserImg}
           alt="Radio Browser Logo"
@@ -58,7 +58,7 @@ export default function Home() {
                 page={page}
                 setSelectedRadio={setSelectedRadio}
               />
-              <div className="flex space-x-2 mt-4">
+              <div className="flex space-x-2 mt-4 mb-8">
                 <button
                   onClick={handlePreviousPage}
                   disabled={page === 1}

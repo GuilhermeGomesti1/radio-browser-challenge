@@ -8,9 +8,12 @@ import favoritesImg from "../../../public/favoritesImg.png";
 import Image from "next/image";
 import BackButton from "../components/BackButton";
 
+const ITEMS_PER_PAGE = 10;
+
 const FavoritePage: React.FC = () => {
   const { favorites, isLoading } = useFavorites();
   const [selectedRadio, setSelectedRadio] = useState<Station | null>(null);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const handleRadioSelect = (radio: Station) => {
     setSelectedRadio(radio);
@@ -18,6 +21,24 @@ const FavoritePage: React.FC = () => {
 
   const handleBack = () => {
     setSelectedRadio(null);
+  };
+
+  const totalPages = Math.ceil(favorites.length / ITEMS_PER_PAGE);
+
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const endIndex = startIndex + ITEMS_PER_PAGE;
+  const currentFavorites = favorites.slice(startIndex, endIndex);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
   };
 
   return (
@@ -34,31 +55,49 @@ const FavoritePage: React.FC = () => {
         />
       </div>{" "}
       {selectedRadio ? (
-        <>
-          <div className="max-w-[600px] mx-auto  ">
-            <RadioItem radio={selectedRadio} onSelect={setSelectedRadio} />
-            <div className="flex justify-center items-center mt-4 ">
-              {" "}
-              <div className="mt-4 text-center text-white">
-                <h2 className="text-xl font-bold">{selectedRadio.name}</h2>
-                <p>{selectedRadio.language} </p>
-                <p>{selectedRadio.country}</p>
-                <BackButton
-                  setSelectedRadio={setSelectedRadio}
-                  setQuery={() => {}}
-                />
-              </div>
+        <div className="max-w-[600px] mx-auto">
+          <RadioItem radio={selectedRadio} onSelect={setSelectedRadio} />
+          <div className="flex justify-center items-center mt-4">
+            <div className="mt-4 text-center text-white">
+              <h2 className="text-xl font-bold">{selectedRadio.name}</h2>
+              <p>{selectedRadio.language} </p>
+              <p>{selectedRadio.country}</p>
+              <BackButton
+                setSelectedRadio={setSelectedRadio}
+                setQuery={() => {}}
+              />
             </div>
           </div>
-        </>
+        </div>
       ) : (
         <div className="max-w-[600px] mx-auto flex flex-col gap-8">
-          {" "}
           <FavoriteRadios
-            favorites={favorites}
+            favorites={currentFavorites}
             isLoading={isLoading}
             handleRadioSelect={handleRadioSelect}
-          />{" "}
+          />
+          <div className="flex justify-center mt-4 mb-8 gap-4">
+            <button
+              onClick={handlePreviousPage}
+              disabled={currentPage === 1}
+              className={`bg-[#FF6B00] rounded font-bold text-white transition-all duration-250 ease-in-out hover:brightness-110 hover:scale-103 px-4 py-2 ${
+                currentPage === 1 ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+            >
+              Anterior
+            </button>
+            <button
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+              className={`bg-[#FF6B00] rounded font-bold text-white transition-all duration-250 ease-in-out hover:brightness-110 hover:scale-103 px-4 py-2 ${
+                currentPage === totalPages
+                  ? "opacity-50 cursor-not-allowed"
+                  : ""
+              }`}
+            >
+              Próxima
+            </button>
+          </div>
         </div>
       )}
     </div>
