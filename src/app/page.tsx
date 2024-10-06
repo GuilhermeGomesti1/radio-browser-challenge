@@ -58,7 +58,7 @@ export default function Home() {
                 page={page}
                 setSelectedRadio={setSelectedRadio}
               />
-              <div className="flex space-x-2 mt-4 mb-8">
+              <div className="flex space-x-2 mt-8 mb-16">
                 <button
                   onClick={handlePreviousPage}
                   disabled={page === 1}

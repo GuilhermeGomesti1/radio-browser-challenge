@@ -76,7 +76,7 @@ const FavoritePage: React.FC = () => {
             isLoading={isLoading}
             handleRadioSelect={handleRadioSelect}
           />
-          <div className="flex justify-center mt-4 mb-8 gap-4">
+          <div className="flex justify-center mt-4 mb-16 gap-4">
             <button
               onClick={handlePreviousPage}
               disabled={currentPage === 1}
