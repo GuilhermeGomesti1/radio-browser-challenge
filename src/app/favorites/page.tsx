@@ -70,7 +70,7 @@ const FavoritePage: React.FC = () => {
           </div>
         </div>
       ) : (
-        <div className="max-w-[600px] mx-auto flex flex-col gap-8">
+        <div className="max-w-[670px] mx-auto flex flex-col gap-8">
           <FavoriteRadios
             favorites={currentFavorites}
             isLoading={isLoading}
