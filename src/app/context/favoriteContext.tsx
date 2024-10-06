@@ -4,20 +4,25 @@ import { Station } from "@/app/types/types";
 const FavoriteContext = createContext<{
   favorites: Station[];
   toggleFavorite: (radio: Station) => void;
+  isLoading: boolean;
 }>({
   favorites: [],
   toggleFavorite: () => {},
+  isLoading: true,
 });
 
 export const FavoriteProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [favorites, setFavorites] = useState<Station[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
   useEffect(() => {
     const savedFavorites = localStorage.getItem("favorites");
     if (savedFavorites) {
       setFavorites(JSON.parse(savedFavorites));
     }
+    setIsLoading(false);
   }, []);
 
   const toggleFavorite = (radio: Station) => {
@@ -36,11 +41,13 @@ export const FavoriteProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   return (
-    <FavoriteContext.Provider value={{ favorites, toggleFavorite }}>
+    <FavoriteContext.Provider value={{ favorites, toggleFavorite, isLoading }}>
+      {" "}
       {children}
     </FavoriteContext.Provider>
   );
 };
+
 export const useFavorites = () => {
   return useContext(FavoriteContext);
 };

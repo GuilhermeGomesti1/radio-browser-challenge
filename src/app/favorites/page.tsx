@@ -7,10 +7,9 @@ import RadioItem from "@/app/components/RadioItem";
 import favoritesImg from "../../../public/favoritesImg.png";
 import Image from "next/image";
 import BackButton from "../components/BackButton";
-const FavoritePage: React.FC<{
-  isLoading: boolean;
-}> = ({ isLoading }) => {
-  const { favorites } = useFavorites();
+
+const FavoritePage: React.FC = () => {
+  const { favorites, isLoading } = useFavorites();
   const [selectedRadio, setSelectedRadio] = useState<Station | null>(null);
 
   const handleRadioSelect = (radio: Station) => {
