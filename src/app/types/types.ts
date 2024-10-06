@@ -7,8 +7,8 @@ export interface Station {
   favicon: string;
   country: string;
   countrycode: string;
-  state?: string; // Pode ser opcional
-  language?: string; // Pode ser opcional
+  state?: string;
+  language?: string;
   votes: number;
   lastchangetime: string;
   codec: string;
@@ -19,7 +19,7 @@ export interface Station {
   clickcount: number;
   clicktrend: number;
   ssl_error: number;
-  geo_lat?: number; // Pode ser opcional
-  geo_long?: number; // Pode ser opcional
+  geo_lat?: number;
+  geo_long?: number;
   has_extended_info: boolean;
 }

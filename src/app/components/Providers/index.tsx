@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { FavoriteProvider } from "@/app/favoriteContext";
+import { FavoriteProvider } from "@/app/context/favoriteContext";
 
 const queryClient = new QueryClient();
 

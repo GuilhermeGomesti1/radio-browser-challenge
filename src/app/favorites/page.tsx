@@ -1,10 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import FavoriteRadios from "@/app/components/FavoriteRadios";
-import { useFavorites } from "../favoriteContext";
+import { useFavorites } from "../context/favoriteContext";
 import { Station } from "../types/types";
 import RadioItem from "@/app/components/RadioItem";
-
+import favoritesImg from "../../../public/favoritesImg.png";
+import Image from "next/image";
+import BackButton from "../components/BackButton";
 const FavoritePage: React.FC<{
   isLoading: boolean;
 }> = ({ isLoading }) => {
@@ -21,16 +23,32 @@ const FavoritePage: React.FC<{
 
   return (
     <div className="p-4 min-h-screen">
-      <h1 className="text-white text-2xl mb-4 text-center">Favorite Radios</h1>
+      <div className="flex justify-center mb-4 pt-4">
+        <Image
+          src={favoritesImg}
+          alt="Favorites IMG"
+          width={519}
+          height={97}
+          className="object-contain"
+          loading="lazy"
+          quality={100}
+        />
+      </div>{" "}
       {selectedRadio ? (
         <>
           <RadioItem radio={selectedRadio} onSelect={setSelectedRadio} />
-          <button
-            onClick={handleBack}
-            className="bg-red-500 text-white px-4 py-2 rounded mt-4"
-          >
-            Voltar
-          </button>
+          <div className="flex justify-center items-center mt-4">
+            {" "}
+            <div className="mt-4 text-center text-white">
+              <h2 className="text-xl font-bold">{selectedRadio.name}</h2>
+              <p>{selectedRadio.language} </p>
+              <p>{selectedRadio.country}</p>
+              <BackButton
+                setSelectedRadio={setSelectedRadio}
+                setQuery={() => {}}
+              />
+            </div>
+          </div>
         </>
       ) : (
         <FavoriteRadios

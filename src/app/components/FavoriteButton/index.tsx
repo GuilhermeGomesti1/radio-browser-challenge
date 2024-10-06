@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Station } from "@/app/types/types";
-import { useFavorites } from "@/app/favoriteContext";
+import { useFavorites } from "@/app/context/favoriteContext";
 
 const FavoriteButton: React.FC<{
   radio: Station;

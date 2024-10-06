@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { Station } from "@/app/types/types";
 import FavoriteButton from "@/app/components/FavoriteButton";
 
@@ -18,6 +18,21 @@ const RadioItem: React.FC<RadioItemProps> = ({ radio, onSelect }) => {
     }
     onSelect(radio);
   };
+
+  useEffect(() => {
+    const audioElement = audioRef.current;
+    if (audioElement) {
+      const handlePause = () => {
+        audioElement.currentTime = 0;
+      };
+
+      audioElement.addEventListener("pause", handlePause);
+
+      return () => {
+        audioElement.removeEventListener("pause", handlePause);
+      };
+    }
+  }, [audioRef]);
 
   return (
     <li
