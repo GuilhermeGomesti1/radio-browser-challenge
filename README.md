@@ -84,10 +84,6 @@ npm install
 
 ## Imagens do Projeto:
 
-![Screenshot 2024-10-07 173327](https://github.com/user-attachments/assets/61d0dfae-e835-4893-9d56-fd7f9bf58fe5)
-
-![Screenshot 2024-10-07 173420](https://github.com/user-attachments/assets/a53ae39e-a2f5-4e55-a844-8888c536b858)
-
+![mobile-radio](https://github.com/user-attachments/assets/e25d5009-4f88-4b30-89d2-72027e3d7bbd)
 ![Screenshot 2024-10-07 173657](https://github.com/user-attachments/assets/b523a6c7-7dcb-41a3-88dd-f001cfce647e)
-
 ![Screenshot 2024-10-07 173446](https://github.com/user-attachments/assets/b678400b-e663-408e-b219-35510dfd7518)
