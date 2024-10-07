@@ -1,12 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import RadioList from "@/app/components/RadioList";
-import RadioSearch from "@/app/components/RadioSearch";
+import RadioList from "./components/Radio/RadioList";
+import RadioSearch from "./components/Radio/RadioSearch";
 import { Station } from "@/app/types/types";
-import RadioItem from "./components/RadioItem";
+import RadioItem from "./components/Radio/RadioItem";
 import radioBrowserImg from "../../public/radioBrowserImg.png";
 import Image from "next/image";
-import BackButton from "./components/BackButton";
+import BackButton from "./components/Buttons/BackButton";
 export default function Home() {
   const [query, setQuery] = useState<string>("");
   const [page, setPage] = useState<number>(1);

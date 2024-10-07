@@ -23,7 +23,7 @@ const RadioEdit: React.FC<RadioEditProps> = ({ radio, onSave, onCancel }) => {
   };
 
   return (
-    <div className="p-4 bg-gray-800 text-white rounded w-full">
+    <div className="p-4 bg-gray-800 text-white rounded w-full min-w-[340px] sm:min-w-[400px] mb-4">
       <h2 className="text-lg font-bold mb-4">Editar Estação</h2>
 
       <div className="mb-4">

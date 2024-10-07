@@ -2,8 +2,8 @@
 import React from "react";
 import { Station } from "@/app/types/types";
 import Image from "next/image";
-import carregandogif from "../../../../public/carregandogif.gif";
-import RadioItem from "@/app/components/RadioItem";
+import carregandogif from "../../../../../public/carregandogif.gif";
+import RadioItem from "../RadioItem";
 
 interface FavoriteRadiosProps {
   favorites: Station[];

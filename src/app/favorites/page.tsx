@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import FavoriteRadios from "@/app/components/FavoriteRadios";
+import FavoriteRadios from "../components/Radio/FavoriteRadios";
 import { useFavorites } from "../context/favoriteContext";
 import { Station } from "../types/types";
-import RadioItem from "@/app/components/RadioItem";
+import RadioItem from "../components/Radio/RadioItem";
 import favoritesImg from "../../../public/favoritesImg.png";
 import Image from "next/image";
-import BackButton from "../components/BackButton";
+import BackButton from "../components/Buttons/BackButton";
 
 const ITEMS_PER_PAGE = 10;
 

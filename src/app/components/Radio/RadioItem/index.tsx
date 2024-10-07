@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Station } from "@/app/types/types";
-import FavoriteButton from "@/app/components/FavoriteButton";
-import AudioPlayer from "../AudioPlayer";
-import MobileAudioPlayer from "../MobileAudioPlayer";
+import FavoriteButton from "../../Buttons/FavoriteButton";
+import AudioPlayer from "../../players/AudioPlayer";
+import MobileAudioPlayer from "../../players/MobileAudioPlayer";
 import RadioEdit from "../RadioEdit";
 
 interface RadioItemProps {

@@ -12,7 +12,7 @@ const RadioSearch: React.FC<{
   };
 
   return (
-    <div className="flex flex-col items-center ml-5 md:ml-0 md:mr-12 mb-4">
+    <div className="flex flex-col items-center  md:ml-0 md:mr-12 mb-4">
       <input
         type="text"
         value={query}
