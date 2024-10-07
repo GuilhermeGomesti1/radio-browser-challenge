@@ -52,6 +52,7 @@ const FavoritePage: React.FC = () => {
           className="object-contain"
           loading="lazy"
           quality={100}
+          priority={true}
         />
       </div>{" "}
       {selectedRadio ? (
