@@ -82,4 +82,4 @@ npm install
 
    Isso iniciará o servidor de desenvolvimento em `http://localhost:3000`.
 
-## Imagens e Vídeos do projeto em execução:
+## Imagens do Projeto:
