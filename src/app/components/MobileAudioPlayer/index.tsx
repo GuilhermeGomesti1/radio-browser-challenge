@@ -53,7 +53,7 @@ const MobileAudioPlayer: React.FC<MobileAudioPlayerProps> = ({
   const isHlsStream = isHLS(src);
 
   return (
-    <div className="flex justify-center items-center mt-4">
+    <div className="flex justify-center items-center mt-0">
       <audio ref={audioRef} src={src} />
       {isAvailable && !isHlsStream ? (
         <button

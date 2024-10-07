@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import { useAudioContext } from "@/app/context/audioContext";
 
 interface AudioPlayerProps {
   src: string;
@@ -9,22 +10,37 @@ interface AudioPlayerProps {
 const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, onPause }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isAvailable, setIsAvailable] = useState<boolean>(true);
+  const { currentAudio, setCurrentAudio } = useAudioContext();
 
   useEffect(() => {
     const audioElement = audioRef.current;
 
-    if (audioElement) {
-      const handlePause = () => {
-        if (onPause) onPause();
-      };
+    const handlePause = () => {
+      if (onPause) onPause();
+      setCurrentAudio(null);
+    };
 
+    const handlePlay = async () => {
+      if (currentAudio && currentAudio !== audioElement) {
+        currentAudio.pause();
+        await new Promise((resolve) => {
+          currentAudio.onpause = resolve;
+        });
+      }
+
+      setCurrentAudio(audioElement);
+    };
+
+    if (audioElement) {
       audioElement.addEventListener("pause", handlePause);
+      audioElement.addEventListener("play", handlePlay);
 
       return () => {
         audioElement.removeEventListener("pause", handlePause);
+        audioElement.removeEventListener("play", handlePlay);
       };
     }
-  }, [onPause]);
+  }, [onPause, currentAudio, setCurrentAudio]);
 
   useEffect(() => {
     const isHLS = src.endsWith(".m3u8");
@@ -48,10 +64,15 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src, onPause }) => {
   return (
     <div className="flex items-center">
       {isAvailable ? (
-        <audio ref={audioRef} controls className="ml-4" src={src} />
+        <audio
+          ref={audioRef}
+          controls
+          className="ml-4"
+          src={src}
+          onPlay={() => audioRef.current?.play()}
+        />
       ) : (
         <>
-          {" "}
           <p className="mr-4">no signal</p>
           <div className="flex items-center justify-center p-2 bg-gray-800 rounded-full mr-2">
             <svg
