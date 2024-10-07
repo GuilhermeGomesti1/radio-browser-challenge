@@ -63,7 +63,7 @@ const RadioItem: React.FC<RadioItemProps> = ({ radio, onSelect }) => {
         />
       ) : (
         <>
-          <div className="flex items-center relative ">
+          <div className="flex items-center relative lg:w-[286px] ">
             <div
               className={`w-8 h-8 mr-2 bg-cover ${
                 currentRadio.favicon ? "" : "bg-gray-400"

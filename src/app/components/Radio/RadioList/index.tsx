@@ -31,7 +31,7 @@ const RadioList: React.FC<{
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center ">
+      <div className="flex items-center justify-center w-full lg:w-[690px]">
         <Image src={carregandogif} alt="Loading" width={258} height={310} />
       </div>
     );
@@ -41,11 +41,16 @@ const RadioList: React.FC<{
     <ul className="list-none p-0">
       {radiosToDisplay.length > 0 ? (
         radiosToDisplay.map((radio) => (
-          <RadioItem
-            key={radio.stationuuid}
-            radio={radio}
-            onSelect={handleRadioSelect}
-          />
+          <>
+            {" "}
+            <div className="mb-4">
+              <RadioItem
+                key={radio.stationuuid}
+                radio={radio}
+                onSelect={handleRadioSelect}
+              />
+            </div>
+          </>
         ))
       ) : (
         <li className="text-white">Nenhuma rádio encontrada.</li>
