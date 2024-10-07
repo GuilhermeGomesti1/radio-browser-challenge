@@ -1,5 +1,5 @@
-"use client";
 import React, { useEffect, useRef, useState } from "react";
+import { useAudioContext } from "@/app/context/audioContext";
 
 interface MobileAudioPlayerProps {
   src: string;
@@ -12,6 +12,7 @@ const MobileAudioPlayer: React.FC<MobileAudioPlayerProps> = ({
 }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const { currentAudio, setCurrentAudio } = useAudioContext();
 
   const isHLS = (url: string) => url.endsWith(".m3u8");
 
@@ -21,7 +22,12 @@ const MobileAudioPlayer: React.FC<MobileAudioPlayerProps> = ({
       if (isPlaying) {
         audioElement.pause();
       } else {
+        if (currentAudio && currentAudio !== audioElement) {
+          currentAudio.pause();
+          setCurrentAudio(null);
+        }
         audioElement.play();
+        setCurrentAudio(audioElement);
       }
       setIsPlaying(!isPlaying);
     }

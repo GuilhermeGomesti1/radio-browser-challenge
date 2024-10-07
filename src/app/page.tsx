@@ -33,7 +33,7 @@ export default function Home() {
           quality={100}
         />
       </div>
-      <div className="flex flex-col md:flex-row justify-center items-start">
+      <div className="flex flex-col md:flex-row justify-center ">
         <div className="flex flex-col items-center">
           <RadioSearch setLocalQuery={setQuery} />
         </div>
@@ -41,7 +41,7 @@ export default function Home() {
           {selectedRadio ? (
             <>
               <RadioItem radio={selectedRadio} onSelect={setSelectedRadio} />
-              <div className="mt-4 text-center text-white">
+              <div className="mt-4 text-center text-white ">
                 <h2 className="text-xl font-bold">{selectedRadio.name}</h2>
                 <p>{selectedRadio.language} </p>
                 <p>{selectedRadio.country}</p>
