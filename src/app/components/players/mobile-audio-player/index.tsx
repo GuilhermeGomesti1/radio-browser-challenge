@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useAudioContext } from "@/app/context/audioContext";
+import { useAudioContext } from "@/app/context/audio-context";
 
 interface MobileAudioPlayerProps {
   src: string;

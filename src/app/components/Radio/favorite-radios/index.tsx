@@ -3,7 +3,7 @@ import React from "react";
 import { Station } from "@/app/types/types";
 import Image from "next/image";
 import carregandogif from "../../../../../public/carregandogif.gif";
-import RadioItem from "../RadioItem";
+import RadioItem from "../radio-item";
 
 interface FavoriteRadiosProps {
   favorites: Station[];

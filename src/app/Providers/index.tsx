@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { FavoriteProvider } from "@/app/context/favoriteContext";
-import { EditRadioProvider } from "@/app/context/editContext";
-import { AudioProvider } from "@/app/context/audioContext";
+import { FavoriteProvider } from "@/app/context/favorite-context";
+import { EditRadioProvider } from "@/app/context/edit-context";
+import { AudioProvider } from "@/app/context/audio-context";
 
 const queryClient = new QueryClient();
 

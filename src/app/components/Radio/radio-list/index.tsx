@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
-import { useStations } from "@/app/services/radioService";
+import { useStations } from "@/app/services/radio-service";
 import { Station } from "@/app/types/types";
 import Image from "next/image";
 import carregandogif from "../../../../../public/carregandogif.gif";
-import RadioItem from "../RadioItem";
+import RadioItem from "../radio-item";
 
 const RadioList: React.FC<{
   localQuery: string;

@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import FavoriteRadios from "../components/Radio/FavoriteRadios";
-import { useFavorites } from "../context/favoriteContext";
+import FavoriteRadios from "../components/Radio/favorite-radios";
+import { useFavorites } from "../context/favorite-context";
 import { Station } from "../types/types";
-import RadioItem from "../components/Radio/RadioItem";
+import RadioItem from "../components/Radio/radio-item";
 import favoritesImg from "../../../public/favoritesImg.png";
 import Image from "next/image";
-import BackButton from "../components/Buttons/BackButton";
+import BackButton from "../components/buttons/back-button";
 
 const ITEMS_PER_PAGE = 10;
 
@@ -50,7 +50,6 @@ const FavoritePage: React.FC = () => {
           width={519}
           height={97}
           className="object-contain"
-          loading="lazy"
           quality={100}
           priority={true}
         />
