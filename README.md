@@ -32,6 +32,8 @@ Este projeto é um desafio de Front-end que utiliza Next.js e consome a API púb
   - `audio-player/`: Componente de player de áudio para telas maiores que reproduz uma estação de rádio e exibe um sinal de "no signal" caso a transmissão não esteja disponível.
   - `mobile-audio-player/`: Componente de player de áudio para telas menores que reproduz uma estação de rádio e exibe um sinal de "no signal" caso a transmissão não esteja disponível.
 
+  - **`providers`**: Componente que encapsula provedores de contexto para gerenciar estado de favoritos, edição de rádios e controle de áudio, utilizando o React Query para gerenciamento de dados assíncronos.
+
   - **`radio/`**: Contém componentes relacionados à exibição, edição e busca de estações de rádio.
   - `favorite-radios/`: Componente que exibe as rádios favoritas.
   - `radio-edit`: Componente que permite editar as informações de uma rádio.
@@ -45,8 +47,6 @@ Este projeto é um desafio de Front-end que utiliza Next.js e consome a API púb
 - `favorite-context.tsx`: Contexto que gerencia as estações de rádio favoritas, permitindo adicionar ou remover rádios da lista.
 
 - **`favorites/page.tsx`**: Página que exibe as estações de rádio favoritas, permitindo navegar entre elas e visualizar detalhes de cada rádio selecionada.
-
-- **`providers`**: Componente que encapsula provedores de contexto para gerenciar estado de favoritos, edição de rádios e controle de áudio, utilizando o React Query para gerenciamento de dados assíncronos.
 
 - **`services/`**: Contém funções e hooks responsáveis por gerenciar a comunicação com a API de estações de rádio.
 - `api.ts`: Função que realiza requisições para obter estações de rádio da API.
